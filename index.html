@@ -3,53 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>Valentine Animation</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffebee;
-            color: #d50000;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            font-size: 3em;
+            background-color: #ffcccb;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .heart {
-            color: #e91e63;
-            font-size: 100px;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 20px;
+            transform: rotate(-45deg);
+            animation: float 5s infinite;
         }
-        button {
-            background-color: #d50000;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            cursor: pointer;
-            border-radius: 5px;
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
         }
-        button:hover {
-            background-color: #c51162;
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Our Valentine's Day Surprise!</h1>
-    <div class="heart">❤️</div>
-    <p>Click the button below to receive a sweet message!</p>
-    <button onclick="displayMessage()">Get Your Message</button>
-    <p id="message" style="font-size: 1.5em;"></p>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
     <script>
-        function displayMessage() {
-            const messages = [
-                'You are loved! 💖',
-                'Happy Valentine’s Day! 🌹',
-                'Love is in the air! 🌈',
-                'You make my heart smile! 😊'
-            ];
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.getElementById('message').innerText = messages[randomIndex];
-        }
+        // Additional animations or effects can be scripted here
     </script>
 </body>
 </html>
