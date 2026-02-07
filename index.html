@@ -3,83 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Page</title>
+    <title>Propose Day Celebration</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2e1e1;
             overflow: hidden;
         }
         .card {
             width: 300px;
             height: 400px;
-            margin: 50px auto;
-            background: white;
+            background-color: #ffcccb;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform: translateY(-50px);
-            opacity: 0;
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-100vh);
+            animation: entrance 1s forwards;
         }
-        .card.visible {
-            transform: translateY(0);
-            opacity: 1;
+        @keyframes entrance {
+            to {
+                transform: translateY(0);
+            }
         }
         .button {
-            margin: 20px;
+            margin-top: 20px;
             padding: 10px 20px;
-            background-color: #ff6f61;
+            background-color: #ff69b4;
             border: none;
             border-radius: 5px;
             color: white;
-            font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
         }
         .button:hover {
-            background-color: #ff3b30;
-            transform: scale(1.05);
-        }
-        @keyframes confetti {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+            transform: scale(1.1);
         }
         .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #ffcc00;
-            animation: confetti 1s ease-in forwards;
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: gold;
             opacity: 0;
+            animation: fall 1.5s infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card"> 
-        <h1>Happy Valentine's Day!</h1>
-        <button class="button">Send Love</button>
+    <div class="card" id="celebrationCard">
+        <h1>💖 Propose Day 💖</h1>
+        <p>Make this day special!</p>
+        <button class="button" onclick="celebrate()">Propose Now!</button>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const card = document.querySelector('.card');
-            card.classList.add('visible');
-            const button = document.querySelector('.button');
-            button.addEventListener('click', function() {
-                for (let i = 0; i < 100; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    document.body.appendChild(confetti);
-                    setTimeout(() => {
-                        confetti.style.animation = 'confetti 1s ease-in forwards';
-                        confetti.style.opacity = 1;
-                    }, 10);
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 1000);
-                }
-            });
-        });
+        function celebrate() {
+            for (let i = 0; i < 100; i++) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(confetti);
+            setTimeout(() => {
+                confetti.remove();
+            }, 1500);
+        }
     </script>
 </body>
 </html>
