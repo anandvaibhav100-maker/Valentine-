@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebee;
+            color: #d50000;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        .heart {
+            color: #e91e63;
+            font-size: 100px;
+        }
+        button {
+            background-color: #d50000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #c51162;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Valentine's Day Surprise!</h1>
+    <div class="heart">❤️</div>
+    <p>Click the button below to receive a sweet message!</p>
+    <button onclick="displayMessage()">Get Your Message</button>
+    <p id="message" style="font-size: 1.5em;"></p>
+    <script>
+        function displayMessage() {
+            const messages = [
+                'You are loved! 💖',
+                'Happy Valentine’s Day! 🌹',
+                'Love is in the air! 🌈',
+                'You make my heart smile! 😊'
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('message').innerText = messages[randomIndex];
+        }
+    </script>
+</body>
+</html>
