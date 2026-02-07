@@ -39,3 +39,136 @@
     <!-- More cards can be added here -->
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Propose Day 💖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6ee;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 28px 24px;
+      border-radius: 18px;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #ff3366;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .buttons {
+      position: relative;
+      height: 90px;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background: #ff3366;
+      color: white;
+    }
+
+    #noBtn {
+      background: #e0e0e0;
+      position: absolute;
+      left: 120px;
+      top: 45px;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-300px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1>Will you be my Valentine? 💗</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+  </div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const card = document.getElementById("card");
+
+  function moveNoButton() {
+    const x = Math.random() * 70;
+    const y = Math.random() * 60;
+    noBtn.style.left = x + "vw";
+    noBtn.style.top = y + "vh";
+  }
+
+  noBtn.addEventListener("touchstart", moveNoButton);
+  noBtn.addEventListener("mouseover", moveNoButton);
+
+  yesBtn.addEventListener("click", () => {
+    card.innerHTML = `
+      <h1>YAY!! 💞<br>
+      You just made my Propose Day perfect 💌</h1>
+    `;
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 3000);
+    }
+  });
+</script>
+
+</body>
+</html>
