@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💗</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ffdbe6;
+  font-family: 'Arial', sans-serif;
+  overflow:hidden;
+}
+
+.card{
+  background:#fff;
+  width:90%;
+  max-width:360px;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+h1{
+  color:#ff4d6d;
+  font-size:22px;
+  line-height:1.4;
+}
+
+.buttons{
+  position:relative;
+  height:90px;
+  margin-top:20px;
+}
+
+button{
+  padding:12px 26px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4d6d;
+  color:#fff;
+}
+
+#no{
+  background:#e5e5e5;
+  position:absolute;
+  left:120px;
+  top:40px;
+}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:float 3s linear forwards;
+}
+
+@keyframes float{
+  to{
+    transform:translateY(-350px);
+    opacity:0;
+  }
+}
+
+img{
+  width:100%;
+  border-radius:12px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Nirali,<br>will you be my Valentine? 💗</h1>
+
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const card = document.getElementById("card");
+
+function moveNo(){
+  noBtn.style.left = Math.random()*70 + "vw";
+  noBtn.style.top = Math.random()*60 + "vh";
+}
+
+noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("mouseover", moveNo);
+
+yesBtn.onclick = () => {
+  card.innerHTML = `
+    <h1>YAY!! 💞<br>I knew you'd say yes</h1>
+    <img src="https://i.imgur.com/1Q9Z1Zm.jpg">
+  `;
+
+  for(let i=0;i<30;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💗";
+    heart.style.left=Math.random()*100+"vw";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
+  }
+};
+</script>
+
+</body>
+</html>
