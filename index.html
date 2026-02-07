@@ -3,90 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propose Day Celebration</title>
+    <title>Valentine's Day Cards</title>
     <style>
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f2e1e1;
-            overflow: hidden;
+            flex-wrap: wrap;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
         }
         .card {
-            width: 300px;
-            height: 400px;
-            background-color: #ffcccb;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transform: translateY(-100vh);
-            animation: entrance 1s forwards;
+            width: 300px; /* Increased card size */
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
         }
-        @keyframes entrance {
-            to {
-                transform: translateY(0);
-            }
+        .card:hover {
+            transform: scale(1.05);
         }
-        .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #ff69b4;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-        .button:hover {
-            transform: scale(1.1);
-        }
-        .confetti {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: gold;
-            opacity: 0;
-            animation: fall 1.5s infinite;
-        }
-        @keyframes fall {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
+        @media (max-width: 480px) {
+            .card {
+                width: 95%; /* Responsive design for smaller screens */
             }
         }
     </style>
 </head>
 <body>
-    <div class="card" id="celebrationCard">
-        <h1>💖 Propose Day 💖</h1>
-        <p>Make this day special!</p>
-        <button class="button" onclick="celebrate()">Propose Now!</button>
+    <div class="card">
+        <h2>Happy Valentine's Day!</h2>
+        <p>Wishing you a day filled with love and joy.</p>
     </div>
-    <script>
-        function celebrate() {
-            for (let i = 0; i < 100; i++) {
-                createConfetti();
-            }
-        }
-
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = `${Math.random() * 100}vw`;
-            document.body.appendChild(confetti);
-            setTimeout(() => {
-                confetti.remove();
-            }, 1500);
-        }
-    </script>
+    <!-- More cards can be added here -->
 </body>
 </html>
